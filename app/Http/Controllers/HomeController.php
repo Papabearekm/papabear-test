@@ -61,7 +61,7 @@ class HomeController extends Controller
         }
         $updatedEndDate = Carbon::parse($endDate)->addDay()->format('Y-m-d');
 
-        $salonCount = Salon::whereBetween('created_at', [$startDate, $updatedEndDate])->whereIn('uid', $salon)->count();
+        $salonCount = Salon::whereBetween('created_at', [$startDate, $updatedEndDate])->whereIn('uid', $salon)->whereNot('status', 2)->count();
         $todaySalonCount = Salon::where('created_at', Carbon::now()->format('Y-m-d'))->whereIn('uid', $salon)->count();
         $upgradedSalonsCount = Salon::whereBetween('created_at', [$startDate, $updatedEndDate])->whereIn('uid', $salon)->where('upgrade', 1)->count();
         $freelancerCount = Individual::whereBetween('created_at', [$startDate, $updatedEndDate])->whereIn('uid', $freelancer)->count();

@@ -31,6 +31,7 @@ class Index extends Component
         } else {
             $this->salons = User::with('salon')
                 ->where('type', 'salon')
+                ->whereNot('status', 2)
                 ->get();
         }
     }
@@ -44,11 +45,11 @@ class Index extends Component
     {
         $salon = User::find($this->salon_id);
         $salon->update([
-            'status' => 0
+            'status' => 2
         ]);
 
         $salon->salon->update([
-            'status' => 0
+            'status' => 2
         ]);
 
         $this->reset_fields();
