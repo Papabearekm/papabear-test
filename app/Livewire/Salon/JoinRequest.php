@@ -33,6 +33,20 @@ class JoinRequest extends Component
         }
     }
 
+    public function destroy($id)
+   {
+   
+        DB::beginTransaction();
+        $partner_request = RegisterRequest::findOrFail($id);
+        $partner_request->update([
+            'status' => 2
+        ]);
+
+        DB::commit();
+        Toastr::success('Partner Request Deleted', 'Success');
+         return redirect()->route('salon.requests');
+    }
+
     public function approve($id) {
         try {
             DB::beginTransaction();
