@@ -31,6 +31,7 @@ class Index extends Component
         } else {
             $this->freelancers = User::with('individual')
                 ->whereIn('type', ['individual', 'freelancer'])
+                ->whereNot('status', 2)
                 ->get();
         }
     }
@@ -44,11 +45,11 @@ class Index extends Component
     {
         $freelancer = User::find($this->freelancer_id);
         $freelancer->update([
-            'status' => 0
+            'status' => 2
         ]);
 
         $freelancer->individual->update([
-            'status' => 0
+            'status' => 2
         ]);
 
         $this->reset_fields();
