@@ -64,7 +64,7 @@ class HomeController extends Controller
         $salonCount = Salon::whereBetween('created_at', [$startDate, $updatedEndDate])->whereIn('uid', $salon)->whereNot('status', 2)->count();
         $todaySalonCount = Salon::where('created_at', Carbon::now()->format('Y-m-d'))->whereIn('uid', $salon)->count();
         $upgradedSalonsCount = Salon::whereBetween('created_at', [$startDate, $updatedEndDate])->whereIn('uid', $salon)->where('upgrade', 1)->count();
-        $freelancerCount = Individual::whereBetween('created_at', [$startDate, $updatedEndDate])->whereIn('uid', $freelancer)->count();
+        $freelancerCount = Individual::whereBetween('created_at', [$startDate, $updatedEndDate])->whereIn('uid', $freelancer)->whereNot('status', 2)->count();
         $todayFreelancerCount = Individual::where('created_at', Carbon::now()->format('Y-m-d'))->whereIn('uid', $freelancer)->count();
         $upgradedFreelancerCount = Individual::whereBetween('created_at', [$startDate, $updatedEndDate])->whereIn('uid', $freelancer)->where('upgrade', 1)->count();
         $salonAppointmentsCount = Appointments::whereBetween('save_date', [$startDate, $updatedEndDate])->whereIn('salon_id', $salon)->count();
