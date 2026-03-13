@@ -50,7 +50,6 @@
                                             href="{{ route('salon.request.view', $request->id) }}">
                                             {{ __('View') }}
                                         </a>
-                                        
                                         <button class="btn btn-sm btn-light waves-effect text-danger"
                                             data-bs-toggle="modal" data-bs-target="#delete_modal"
                                             wire:click="destroy({{ $request->id }})" wire:key="{{ $request->id }}">
