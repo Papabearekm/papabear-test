@@ -33,6 +33,19 @@ class JoinRequest extends Component
         }
     }
 
+    public function destroy($id)
+    {
+   
+        DB::beginTransaction();
+        $partner_request = RegisterRequest::findOrFail($id);
+        $partner_request->delete();
+
+        DB::commit();
+        Toastr::success('Freelancer Request Deleted', 'Success');
+         return redirect()->route('freelancer.requests');
+    }
+
+
     public function approve($id) {
         try {
             DB::beginTransaction();
