@@ -1,1 +1,10 @@
 vendor
+
+# Environment and credentials
+.env
+.env.*
+!.env.example
+
+# Firebase service account keys
+public/uploads/firebase/*.json
+public/uploads/firebase/
