@@ -20,7 +20,7 @@
                             <i class="fas fa-filter me-2 text-primary"></i>
                             Filter by City
                         </h5>
-                        <p class="text-muted mb-0 mt-1">Select a city to filter dashboard data</p>
+                        <p class="text-muted mb-0 mt-1">Selecttt a city to filter dashboard data</p>
                     </div>
                     <div class="col-md-6">
                         <div class="d-flex align-items-center">
